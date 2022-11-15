@@ -31,7 +31,7 @@ body {
     height: 100%;
     display: grid;
     grid-template-columns: 55% 45%;
-    grid-template-rows: 20% 50% 30%;
+    grid-template-rows: 10% 55% 35%;
     grid-template-areas: 
                         "nav        aside" 
                         "section    aside" 
@@ -91,14 +91,27 @@ body {
     }
 }
 
+/* Navbar */
+
 .navbar {
-    position: relative;
-    width: 60%;
-    height: 10vh;
+    grid-area: nav;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border-bottom: 1px solid #2e2e2e;     */
+    padding: 0 0 0 60px;
+    
+    animation: 2s navbar 0.5s ease-in-out;
+}
+
+@keyframes navbar {
+    0% {
+        transform: translateY(-200px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 .navbar-links {
@@ -111,28 +124,29 @@ body {
 .navbar-links li {
     margin: 20px;
     color: var(--color-red);
+    cursor: pointer;
 }
 
 .navbar .navbar-logo img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 }
 
 aside {
+    grid-area: aside;
     position: absolute;
     display: flex;
-    flex-direction: row;
-    width: 40%;
+    flex-direction: row;  
+    width: 100%;  
     height: 100%;
     top: 0;
-    right: 0;
-    /* border-left: 1px solid #2e2e2e; */
+    right: 0;    
 }
 
 aside div {
     position: relative;
-    width: 60%;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-items: center;
     align-items: center;
@@ -148,6 +162,23 @@ aside div h2 {
     align-items: center;
     font-size: 40px;
     transform: rotate(270deg);
+
+    opacity: 0;
+
+    animation: aside-text;
+    animation-duration: 0.5s;
+    animation-delay: 2.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;    
+}
+
+@keyframes aside-text {
+    0% {
+        opacity: 0;
+    }    
+    100% {
+        opacity: 1;
+    }
 }
 
 aside picture {
@@ -168,18 +199,42 @@ aside picture img {
     left: -50%;
     width: 350px;
     height: auto;
+
+    animation: 2s aside-img 0.5s ease-in-out;
+}
+
+@keyframes aside-img {
+    0% {
+        transform: translateX(600px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 main {
+    grid-area: section;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60%;
-    height: 55vh;
-    padding-left: 50px;
-    padding-right: 150px;
+    width: 100%;
+    height: 100%;
+    padding-left: 80px;
+    padding-right: 120px;
+
+    animation:  2s main 0.5s ease-in-out;
+}
+
+@keyframes main {
+    0% {
+        transform: translateY(-600px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+
 }
 
 main .main-titulo {    
@@ -187,7 +242,7 @@ main .main-titulo {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 20vh;
+    height: 100%;
     font-size: 30px;
     text-align: center;
 }
@@ -198,20 +253,35 @@ main .main-info {
     justify-content: center;
     align-items: center; 
     width: 100%;
-    height: 35vh;
+    height: 100%;
     font-size: 20px;
     text-align: left;
 }
 
 footer {
+    grid-area: footer;
     position: relative;
     display: flex;
     justify-content: space-evenly;
     align-items: flex-end;
     background: var(--color-yellow);
     border-top-right-radius: 100px;
-    width: 60%;
-    height: 35vh;
+    width: 100%;
+    height: 100%;
+
+    animation: 4s footer 0.5s ease-in-out;
+}
+
+@keyframes footer {
+    0% {
+        transform: translateY(600px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 footer div {        
@@ -233,6 +303,29 @@ footer div picture img {
     width: 130px;
     margin-left: 20px;
     top: 40px;
-    height: auto;    
+    height: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+footer div:hover picture img {
+    
+    transform: translateY(-20px) scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: grid;
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 5;
 }
 

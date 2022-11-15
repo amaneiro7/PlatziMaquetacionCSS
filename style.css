@@ -326,6 +326,31 @@ footer div:hover picture img {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     position: absolute;
-    z-index: 5;
+    z-index: 4;
+    place-items: center;    
+}
+
+.modal-content {
+    background: white;
+    width: 50%;
+    height: 50%;
+}
+
+.modal-content-slider {
+    width: 300px;
+    height: 200px;
+    transform-style: preserve-3d;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.modal-content-close {
+    cursor: pointer;
 }
 
